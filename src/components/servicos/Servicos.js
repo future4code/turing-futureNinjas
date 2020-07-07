@@ -28,12 +28,18 @@ class Servicos extends React.Component {
         this.setState({inputDescricao: event.target.value})
     }
 
+    onChangeSelect = (event) => {
+        this.setState({selectOrdenacao: event.target.value})
+    }
+
     render () {
 
         console.log(this.state.inputTitulo)
         console.log(this.state.inputDescricao)
         console.log(this.state.inputValorMaximo)
         console.log(this.state.inputValorMínimo)
+
+        console.log(this.state.selectOrdenacao)
 
         return (
             <div>
@@ -57,14 +63,16 @@ class Servicos extends React.Component {
                     onChange={this.onChangeDescricao}
                     value={this.state.inputDescricao}
                 />
-                <select> 
-                    <option>Maior Preço</option>
-                    <option>Menor Preço</option>
-                    <option>Ordem alfábetica de A-Z</option>
-                    <option>Ordem alfabética de Z-A</option>
-                    <option>Maior Prazo</option>
-                    <option>Menor Prazo</option>
+                <select onChange={this.onChangeSelect} value={this.state.selectOrdenacao}> 
+                    <option value="">Selecione</option>
+                    <option value="MaiorPreco">Maior Preço</option>
+                    <option value="MenorPreco">Menor Preço</option>
+                    <option value="OrdemAZ">Ordem alfábetica de A-Z</option>
+                    <option value="OrdemZA">Ordem alfabética de Z-A</option>
+                    <option value="MaiorPrazo">Maior Prazo</option>
+                    <option value="MenorPrazo">Menor Prazo</option>
                 </select>
+                <button onClick={this.props.voltar}>Voltar</button>
             </div>
         )
     }

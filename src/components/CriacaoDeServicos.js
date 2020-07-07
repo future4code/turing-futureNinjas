@@ -58,6 +58,7 @@ class CriacaoDeServicos extends React.Component {
                     <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" /> Dinheiro
                     <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" /> Boleto
                 </form>
+                <button onClick={this.props.voltar}>Voltar</button>
             </div>
         )
     }
