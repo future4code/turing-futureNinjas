@@ -75,7 +75,13 @@ class Servicos extends React.Component {
                 </select>
                 <button>Filtrar</button>
                 <div>
-                    <Filtro />
+                    <Filtro 
+                        ValorMinimo={this.state.inputValorMínimo}
+                        ValorMáximo={this.state.inputValorMaximo}
+                        Titulo={this.state.inputTitulo}
+                        Descricao={this.state.inputDescricao}
+                        select={this.state.selectOrdenacao}
+                    />
                 </div>
                 <button onClick={this.props.voltar}>Voltar</button>
             </div>
