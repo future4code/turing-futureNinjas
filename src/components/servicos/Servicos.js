@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import Filtro from './Filtro'
+import CardServico from './CardServico'
 
 class Servicos extends React.Component {
 
@@ -10,7 +10,17 @@ class Servicos extends React.Component {
         inputValorMínimo: "",
         inputTitulo: "",
         inputDescricao: "",
-        selectOrdenacao: ""
+        selectOrdenacao: "",
+        listaDeServicos: [],
+    }
+
+    componentDidMount = () => {
+        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasOne/jobs',)
+        .then((response) => {
+            this.setState({listaDeServicos: response.data.jobs})
+        }).catch((error) => {
+            console.log(error.message)
+        })
     }
 
     onChangeValorMaximo = (event) => {
@@ -68,12 +78,8 @@ class Servicos extends React.Component {
                 </select>
                 <button>Filtrar</button>
                 <div>
-                    <Filtro 
-                        ValorMinimo={this.state.inputValorMínimo}
-                        ValorMáximo={this.state.inputValorMaximo}
-                        Titulo={this.state.inputTitulo}
-                        Descricao={this.state.inputDescricao}
-                        select={this.state.selectOrdenacao}
+                    <CardServico 
+                        lista={this.state.listaDeServicos}
                     />
                 </div>
                 <button onClick={this.props.voltar}>Voltar</button>
