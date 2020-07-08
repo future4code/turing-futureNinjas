@@ -7,17 +7,18 @@ class Servicos extends React.Component {
 
     state = {
         inputValorMaximo: "",
-        inputValorMínimo: "",
+        inputValorMinimo: "",
         inputTitulo: "",
         inputDescricao: "",
         selectOrdenacao: "",
         listaDeServicos: [],
+        listaFiltrada: []
     }
 
     componentDidMount = () => {
         axios.get('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasOne/jobs',)
         .then((response) => {
-            this.setState({listaDeServicos: response.data.jobs})
+            this.setState({listaDeServicos: response.data.jobs, listaFiltrada: response.data.jobs} )
         }).catch((error) => {
             console.log(error.message)
         })
@@ -28,7 +29,7 @@ class Servicos extends React.Component {
     }
 
     onChangeValorMinimo = (event) => {
-        this.setState({inputValorMínimo: event.target.value})
+        this.setState({inputValorMinimo: event.target.value})
     }
 
     onChangeTitulo = (event) => {
@@ -43,6 +44,51 @@ class Servicos extends React.Component {
         this.setState({selectOrdenacao: event.target.value})
     }
 
+    onClickFiltro = () => {
+
+        if (this.state.inputValorMinimo !== "" || this.state.inputValorMaximo !== "") {
+            const novaListaFiltrada = this.state.listaDeServicos.filter((servico) => {
+                if (this.state.inputValorMinimo !== "" && this.state.inputValorMaximo !== "") {
+                    if (servico.value >= this.state.inputValorMinimo && servico.value <= this.state.inputValorMaximo) {
+                        return true
+                    }
+                } else if (this.state.inputValorMinimo === "") {
+                    if (servico.value <= this.state.inputValorMaximo) {
+                        return true
+                    }
+                } else if (this.state.inputValorMaximo === "") {
+                    if (servico.value >= this.state.inputValorMinimo) {
+                        return true
+                    }
+                } 
+            })
+            this.setState({listaFiltrada: novaListaFiltrada, inputValorMinimo: "", inputValorMaximo: ""})
+        } else {
+            const novaListaFiltrada2 = this.state.listaDeServicos.filter((servico) => {
+                return true
+            })
+            this.setState({listaFiltrada: novaListaFiltrada2})
+        } 
+        
+        if (this.state.inputTitulo !== "" && this.state.inputDescricao === "") {
+            const novaListaFiltrada3 = this.state.listaDeServicos.filter((servico) => {
+                if (this.state.inputTitulo === servico.title) {
+                    return true
+                }
+            })
+            this.setState({listaFiltrada: novaListaFiltrada3, inputTitulo: ""})
+        }
+        
+        if (this.state.inputDescricao !== "" && this.state.inputTitulo === "") {
+            const novaListaFiltrada4 = this.state.listaDeServicos.filter((servico) => {
+                if (this.state.inputDescricao === servico.description) {
+                    return true
+                }
+            })
+            this.setState({listaFiltrada: novaListaFiltrada4, inputDescricao: ""})
+        }
+    }
+
     render () {
 
         return (
@@ -50,7 +96,7 @@ class Servicos extends React.Component {
                 <label>Valor mínimo</label>
                 <input 
                     onChange={this.onChangeValorMinimo}
-                    value={this.state.inputValorMínimo}
+                    value={this.state.inputValorMinimo}
                 />
                 <label>Valor máximo</label>
                 <input 
@@ -76,10 +122,10 @@ class Servicos extends React.Component {
                     <option value="MaiorPrazo">Maior Prazo</option>
                     <option value="MenorPrazo">Menor Prazo</option>
                 </select>
-                <button>Filtrar</button>
+                <button onClick={this.onClickFiltro}>Filtrar</button>
                 <div>
                     <CardServico 
-                        lista={this.state.listaDeServicos}
+                        lista={this.state.listaFiltrada}
                     />
                 </div>
                 <button onClick={this.props.voltar}>Voltar</button>
@@ -90,3 +136,6 @@ class Servicos extends React.Component {
 }
 
 export default Servicos
+
+/* && this.state.inputTitulo !== "" */
+/* && servico.title === this.state.inputTitulo */

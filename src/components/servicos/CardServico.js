@@ -6,8 +6,6 @@ class CardServico extends React.Component {
 
     render () {
 
-        console.log(this.props.lista)
-
         return(
         <div>
             {this.props.lista.map((servico) => {
