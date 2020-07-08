@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import Filtro from './Filtro'
 
 class Servicos extends React.Component {
 
@@ -72,6 +73,10 @@ class Servicos extends React.Component {
                     <option value="MaiorPrazo">Maior Prazo</option>
                     <option value="MenorPrazo">Menor Prazo</option>
                 </select>
+                <button>Filtrar</button>
+                <div>
+                    <Filtro />
+                </div>
                 <button onClick={this.props.voltar}>Voltar</button>
             </div>
         )
