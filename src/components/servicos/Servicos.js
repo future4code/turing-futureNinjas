@@ -10,7 +10,7 @@ class Servicos extends React.Component {
         inputValorMínimo: "",
         inputTitulo: "",
         inputDescricao: "",
-        selectOrdenacao: "",
+        selectOrdem: "",
         listaDeServicos: [],
     }
 
@@ -39,11 +39,54 @@ class Servicos extends React.Component {
         this.setState({inputDescricao: event.target.value})
     }
 
-    onChangeSelect = (event) => {
-        this.setState({selectOrdenacao: event.target.value})
-    }
+    onChangeSelectOrdem = (event) => {
+        this.setState({selectOrdem: event.target.value})
 
+    }
+   
     render () {
+
+        function ordenaTituloAZ(a,b){
+            return (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0);
+        }
+        function ordenaTituloZA(a,b){
+            return (b.title > a.title) ? 1 : ((a.title > b.title) ? -1 : 0);
+        }
+
+        function ordenaPrecoMenor (a,b){
+            return a.value - b.value
+        }
+        function ordenaPrecoMaior (a,b){
+            return b.value - a.value
+        }
+
+        function ordenaPrazoMenor (a,b){
+            return (a.dueDate > b.dueDate) ? 1 : ((b.dueDate > a.dueDate) ? -1 : 0);
+        }
+        function ordenaPrazoMaior (a,b){
+            return (b.dueDate > a.dueDate) ? 1 : ((a.dueDate > b.dueDate) ? -1 : 0);
+        }
+
+        switch(this.state.selectOrdem){
+            case 'OrdemAZ':
+                this.state.listaDeServicos.sort(ordenaTituloAZ)
+                break;
+            case 'OrdemZA':
+                this.state.listaDeServicos.sort(ordenaTituloZA)
+                break;
+            case 'MenorPreco':
+                this.state.listaDeServicos.sort(ordenaPrecoMenor)
+                break;
+            case 'MaiorPreco':
+                this.state.listaDeServicos.sort(ordenaPrecoMaior)
+                break;
+            case 'MenorPrazo':
+                this.state.listaDeServicos.sort(ordenaPrazoMenor)
+                break;
+            case 'MaiorPrazo':
+                this.state.listaDeServicos.sort(ordenaPrazoMaior)
+                break;
+        }
 
         return (
             <div>
@@ -67,14 +110,15 @@ class Servicos extends React.Component {
                     onChange={this.onChangeDescricao}
                     value={this.state.inputDescricao}
                 />
-                <select onChange={this.onChangeSelect} value={this.state.selectOrdenacao}> 
+                <label>Ordenar por: </label>
+                <select onChange={this.onChangeSelectOrdem} value={this.state.selectOrdem}> 
                     <option value="">Selecione</option>
-                    <option value="MaiorPreco">Maior Preço</option>
                     <option value="MenorPreco">Menor Preço</option>
+                    <option value="MaiorPreco">Maior Preço</option>
                     <option value="OrdemAZ">Ordem alfábetica de A-Z</option>
                     <option value="OrdemZA">Ordem alfabética de Z-A</option>
-                    <option value="MaiorPrazo">Maior Prazo</option>
                     <option value="MenorPrazo">Menor Prazo</option>
+                    <option value="MaiorPrazo">Maior Prazo</option>
                 </select>
                 <button>Filtrar</button>
                 <div>
