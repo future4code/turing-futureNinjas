@@ -35,13 +35,6 @@ class Servicos extends React.Component {
 
     render () {
 
-        console.log(this.state.inputTitulo)
-        console.log(this.state.inputDescricao)
-        console.log(this.state.inputValorMaximo)
-        console.log(this.state.inputValorMínimo)
-
-        console.log(this.state.selectOrdenacao)
-
         return (
             <div>
                 <label>Valor mínimo</label>
