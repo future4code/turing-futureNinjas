@@ -10,11 +10,11 @@ class CardServico extends React.Component {
 
         return(
         <div>
-                {this.props.lista.map((servico) => {
-                    return (
+            {this.props.lista.map((servico) => {
+                return (
                     <div key={servico.id}>Título: {servico.title} Descrição: {servico.description} Valor: {servico.value} Data de Vencimento: {servico.dueDate} Pagamento: {servico.paymentMethods}</div>
-                    )
-                })}
+                )
+            })}
         </div>
         )
     }
