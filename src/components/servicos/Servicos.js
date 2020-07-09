@@ -185,6 +185,3 @@ class Servicos extends React.Component {
 }
 
 export default Servicos
-
-/* && this.state.inputTitulo !== "" */
-/* && servico.title === this.state.inputTitulo */
