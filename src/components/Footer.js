@@ -1,13 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+
+const ContainerFooter = styled.div`
+position: fixed;
+bottom: 0;
+background-color: #2B2D2F;
+color: #FFF;
+width: 100vw;
+text-align: center;
+font-size: 0.7em;
+`
 
 class Footer extends React.Component {
     render () {
         return (
-            <div>
-                <h2>Future Ninjas</h2>
-            </div>
+            <ContainerFooter>
+                <h2>Designed and created by Future Ninjas</h2>
+            </ContainerFooter>
         )
     }
 }
