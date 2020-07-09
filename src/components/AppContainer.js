@@ -4,6 +4,12 @@ import Header from './Header'
 import CriacaoDeServicos from './CriacaoDeServicos'
 import Servicos from './servicos/Servicos'
 import Footer from './Footer'
+import styled from 'styled-components'
+
+const ContainerRenderiza = styled.div`
+ position:relative;
+ margin-bottom: 80px;
+`
 
 export class AppContainer extends Component {
 
@@ -46,8 +52,11 @@ export class AppContainer extends Component {
 
     return (
       <div>
-          <Header />
-          {renderizaNaTela()}
+          <Header 
+          onClickCriarServico={this.onClickCriarServico} 
+          onClickServicos={this.onClickServicos}
+          onClickHome={this.onClickVoltar}/>
+          <ContainerRenderiza>{renderizaNaTela()}</ContainerRenderiza>
           <Footer />
       </div>
     )
