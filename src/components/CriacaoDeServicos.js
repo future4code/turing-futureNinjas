@@ -31,7 +31,8 @@ class CriacaoDeServicos extends React.Component {
         inputTitulo: "",
         inputDescricao: "",
         inputValorDaRemuneracao: "",
-        inputPrazo: ""
+        inputPrazo: "",
+        metodosPag: []
     }
 
     onChangeInputTitulo = (event) => {
@@ -50,12 +51,23 @@ class CriacaoDeServicos extends React.Component {
         this.setState({inputPrazo: event.target.value})
     }
 
+    onChangeChecked = (event) => {
+       let metodosPag = [...this.state.metodosPag, event.target.id]
+        if(this.state.metodosPag.includes(event.target.id)){
+            metodosPag = metodosPag.filter(metodo => metodo !== event.target.id)
+        }
+        this.setState({
+            metodosPag: metodosPag
+        })
+        
+    }
+
     cadastroServico = () => {
         const body = {
             "title": this.state.inputTitulo,
             "description": this.state.inputDescricao,
             "value": this.state.inputValorDaRemuneracao,
-            "paymentMethods": ["card"],
+            "paymentMethods": this.state.metodosPag,
             "dueDate": this.state.inputPrazo
         }
         axios.post('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasOne/jobs', body).then(
@@ -66,7 +78,7 @@ class CriacaoDeServicos extends React.Component {
     }
 
     render () {
-
+        console.log(this.state.metodosPag)
         return (
             <div>
                 <ContainerInputs>
@@ -102,28 +114,28 @@ class CriacaoDeServicos extends React.Component {
                     <FormCheckBox>
                         <ContainerCheckBox>
                             <label>Transferência Bancaria </label>
-                            <input type="checkbox" value="Bike" /> 
+                            <input type="checkbox" id="Transferência Bancária" value="Transferência Bancária" onChange={this.onChangeChecked}/> 
                         </ContainerCheckBox>
                         <ContainerCheckBox>
                             <label>Cartão de débito </label>       
-                            <input type="checkbox" value="Car" />
+                            <input type="checkbox" id="Cartão de débito" value="Cartão de débito" onChange={this.onChangeChecked}/>
                         </ContainerCheckBox>
                         <ContainerCheckBox>
                             <label>Cartão de crédito </label>   
-                            <input type="checkbox" value="Boat" />
+                            <input type="checkbox" id="Cartão de crédito" value="Cartão de crédito" onChange={this.onChangeChecked}/>
                         </ContainerCheckBox>
                         <ContainerCheckBox>
                             <label>Dinheiro </label> 
-                            <input type="checkbox" value="Boat" />
+                            <input type="checkbox" id="Dinheiro" value="Dinheiro" onChange={this.onChangeChecked}/>
                         </ContainerCheckBox>
                         <ContainerCheckBox>
                             <label>Boleto</label> 
-                            <input type="checkbox" value="Boat" /> 
+                            <input type="checkbox" id="Boleto" value="Boleto" onChange={this.onChangeChecked}/> 
                         </ContainerCheckBox>
                     </FormCheckBox>
                 </ContainerInputs>
                 <ContainerButtons>
-                    <button >Cadastrar</button>
+                    <button onClick={this.cadastroServico}>Cadastrar</button>
                     <button onClick={this.props.voltar}>Voltar</button>
                 </ContainerButtons>
             </div>
