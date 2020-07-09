@@ -71,7 +71,8 @@ class CriacaoDeServicos extends React.Component {
             "dueDate": this.state.inputPrazo
         }
         axios.post('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasOne/jobs', body).then(
-            alert("Serviço cadastrado com sucesso!")
+            alert("Serviço cadastrado com sucesso!"),
+            this.setState({inputTitulo: "", inputDescricao: "", inputValorDaRemuneracao: "", inputPrazo: "", metodosPag: []})
         ).catch(err => {
             console.log(err)
         })

@@ -85,7 +85,9 @@ class CardServico extends React.Component {
                                        <H3Card>Descrição: {servico.description} </H3Card>
                                        <p><strong>Valor: R$ {servico.value}</strong></p>
                                        <p>Data de Vencimento: {servico.dueDate} </p>
-                                       <p>Pagamento: {servico.paymentMethods}</p>
+                                       <p>Pagamento: {servico.paymentMethods.map((metodo) => {
+                                           return (`${metodo}; `)
+                                       })}</p>
                                        <button onClick={() => this.onClickDescandidatar(servico.id)}> {renderizaBotao} </button>
                                    </ContainerCard>
                                )
@@ -96,7 +98,9 @@ class CardServico extends React.Component {
                                        <H3Card>Descrição: {servico.description} </H3Card>
                                        <p><strong>Valor: R$ {servico.value}</strong></p>
                                        <p>Data de Vencimento: {servico.dueDate} </p>
-                                       <p>Pagamento: {servico.paymentMethods}</p>
+                                       <p>Pagamento: {servico.paymentMethods.map((metodo) => {
+                                           return (`${metodo}; `)
+                                       })}</p>
                                        <button onClick={() => this.onClickCandidatar(servico.id)}> {renderizaBotao} </button>
                                    </ContainerCard>
                                )
