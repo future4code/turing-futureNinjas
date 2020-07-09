@@ -6,6 +6,8 @@ const ContainerCard = styled.div`
 border: 1px solid black;
 border-radius: 20px;
 padding: 16px;
+width: 90%;
+margin: 0 auto;
 `
 
 const H2Card = styled.h2`
@@ -24,7 +26,7 @@ const ContainerCardServico = styled.div`
     gap: 16px;
     padding:8px;
     width: 100%;
-
+    margin: 16px 0;
 ` 
 
 class CardServico extends React.Component {
@@ -68,6 +70,7 @@ class CardServico extends React.Component {
 
     render () {
 
+
             return(
                     <ContainerCardServico>
        
@@ -102,6 +105,7 @@ class CardServico extends React.Component {
        
                    </ContainerCardServico>
                )
+
     }
     
 }
