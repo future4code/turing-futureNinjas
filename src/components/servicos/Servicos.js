@@ -42,7 +42,7 @@ class Servicos extends React.Component {
 
     onChangeSelectOrdem = (event) => {
         this.setState({selectOrdem: event.target.value})
-
+    }
 
     onClickFiltro = () => {
 
@@ -87,11 +87,7 @@ class Servicos extends React.Component {
             })
             this.setState({listaFiltrada: novaListaFiltrada4, inputDescricao: ""})
         }
-    }
-
-
-    }
-   
+    }   
 
     render () {
 
@@ -119,21 +115,27 @@ class Servicos extends React.Component {
         switch(this.state.selectOrdem){
             case 'OrdemAZ':
                 this.state.listaDeServicos.sort(ordenaTituloAZ)
+                this.state.listaFiltrada.sort(ordenaTituloAZ)
                 break;
             case 'OrdemZA':
                 this.state.listaDeServicos.sort(ordenaTituloZA)
+                this.state.listaFiltrada.sort(ordenaTituloZA)
                 break;
             case 'MenorPreco':
                 this.state.listaDeServicos.sort(ordenaPrecoMenor)
+                this.state.listaFiltrada.sort(ordenaPrecoMenor)
                 break;
             case 'MaiorPreco':
                 this.state.listaDeServicos.sort(ordenaPrecoMaior)
+                this.state.listaFiltrada.sort(ordenaPrecoMaior)
                 break;
             case 'MenorPrazo':
                 this.state.listaDeServicos.sort(ordenaPrazoMenor)
+                this.state.listaFiltrada.sort(ordenaPrazoMenor)
                 break;
             case 'MaiorPrazo':
                 this.state.listaDeServicos.sort(ordenaPrazoMaior)
+                this.state.listaFiltrada.sort(ordenaPrazoMaior)
                 break;
         }
 
