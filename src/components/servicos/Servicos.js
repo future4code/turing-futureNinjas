@@ -16,11 +16,15 @@ class Servicos extends React.Component {
     }
 
     componentDidMount = () => {
+        this.atualizaEstado()
+    }
+
+    atualizaEstado = () => {
         axios.get('https://us-central1-labenu-apis.cloudfunctions.net/futureNinjasOne/jobs',)
         .then((response) => {
-            this.setState({listaDeServicos: response.data.jobs, listaFiltrada: response.data.jobs} )
+        this.setState({listaDeServicos: response.data.jobs, listaFiltrada: response.data.jobs} )
         }).catch((error) => {
-            console.log(error.message)
+        console.log(error.message)
         })
     }
 
@@ -175,6 +179,7 @@ class Servicos extends React.Component {
                 <div>
                     <CardServico 
                         lista={this.state.listaFiltrada}
+                        atualiza={this.atualizaEstado}
                     />
                 </div>
                 <button onClick={this.props.voltar}>Voltar</button>
