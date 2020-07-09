@@ -26,6 +26,7 @@ class Servicos extends React.Component {
 
     onChangeValorMaximo = (event) => {
         this.setState({inputValorMaximo: event.target.value})
+        console.log("teste")
     }
 
     onChangeValorMinimo = (event) => {
