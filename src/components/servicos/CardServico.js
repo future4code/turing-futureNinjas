@@ -39,6 +39,7 @@ class CardServico extends React.Component {
                         <p><strong>Valor: R$ {servico.value}</strong></p>
                         <p>Data de Vencimento: {servico.dueDate} </p>
                         <p>Pagamento: {servico.paymentMethods}</p>
+                        <button>Canditar-me</button>
                     </ContainerCard>
                 )
             })}
