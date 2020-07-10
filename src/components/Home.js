@@ -21,8 +21,9 @@ const H2 = styled.h2`
 `
 
 const H4 = styled.h4`
-    font-size: 20px;
-    font-family: '';
+    font-weight: lighter;
+    font-size: 16px;
+    font-family: 'helvetica';
     display: grid;
     grid-column: 2/4;
     grid-row: 2/3;
@@ -60,7 +61,7 @@ class Home extends React.Component {
             <div>
                 <AreaHome>
                     <H2>O jeito mais esperto de	contratar um serviço</H2>
-                    <H4>Fale o que precisa, receba até 4 orçamentos, escolha o melhor.</H4>
+                    <H4>Fale o que precisa, receba orçamentos e escolha o melhor.</H4>
                     <ButtonHeader onClick={this.props.abrirServico}>QUERO UM PROFISSIONAL AGORA</ButtonHeader>
                 </AreaHome>
                 <hr />

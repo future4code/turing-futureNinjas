@@ -8,17 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '@material-ui/core/FormLabel'
 import FormControl from '@material-ui/core/FormControl'
 
-const ContainerCheckBox = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 0 8px;
-`
-const FormCheckBox = styled.form`
-    border: 1px solid black;
-    width: 15vw;
-    border-radius: 5px;
-    margin: 10px auto;
-`
+
 const ContainerInputs = styled.div`
     display: flex;
     justify-content: center;
@@ -41,7 +31,7 @@ const ContainerServicos = styled.div`
     margin: 16px auto;
     border-radius: 20px;
 `
-const ButtonCriacao = styled.button`
+export const ButtonCriacao = styled.button`
     margin: 16px;
     height: 40px;
     width: 200px;
@@ -115,6 +105,7 @@ class CriacaoDeServicos extends React.Component {
             <ContainerServicos>
                 <ContainerInputs>
                     <StyledTextField
+                        required
                         label='Título' 
                         onChange={this.onChangeInputTitulo}
                         value={this.state.inputTitulo}
@@ -122,6 +113,7 @@ class CriacaoDeServicos extends React.Component {
                 </ContainerInputs>
                 <ContainerInputs>
                     <StyledTextField 
+                        required
                         label='Descrição'
                         onChange={this.onChangeInputDescricao}
                         value={this.state.inputDescricao}
@@ -129,6 +121,7 @@ class CriacaoDeServicos extends React.Component {
                 </ContainerInputs>
                 <ContainerInputs>
                     <StyledTextField 
+                        required
                         label='Valor da Remuneração'
                         onChange={this.onChangeInputValorDaRemuneracao}
                         value={this.state.inputValorDaRemuneracao}
@@ -136,6 +129,7 @@ class CriacaoDeServicos extends React.Component {
                 </ContainerInputs>
                 <ContainerInputs>
                     <StyledTextField 
+                        required
                         label='Prazo'
                         onChange={this.onChangeInputPrazo}
                         value={this.state.inputPrazo}
