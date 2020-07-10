@@ -2,6 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import CardServico from './CardServico'
+import Input from '@material-ui/core/TextField'
+import Select from '@material-ui/core/NativeSelect'
+
+const ButtonCriacao = styled.button`
+    margin: 12.5px;
+    height: 40px;
+    width: 100px;
+    background-color: black;
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+    :hover{
+        background-color: #FFEA52;
+        color: #474117;
+    }
+`
+
+const Option = styled(Select)`
+    color: #737373;
+`
+
+const DivFiltro = styled.div`
+    margin-left: 35px;
+`
 
 class Servicos extends React.Component {
 
@@ -141,48 +167,50 @@ class Servicos extends React.Component {
                 this.state.listaDeServicos.sort(ordenaPrazoMaior)
                 this.state.listaFiltrada.sort(ordenaPrazoMaior)
                 break;
+            default: ;
         }
 
         return (
             <div>
-                <label>Valor mínimo</label>
-                <input 
-                    onChange={this.onChangeValorMinimo}
-                    value={this.state.inputValorMinimo}
-                />
-                <label>Valor máximo</label>
-                <input 
-                    onChange={this.onChangeValorMaximo}
-                    value={this.state.inputValorMaximo}
-                />
-                <label>Título</label>
-                <input 
-                    onChange={this.onChangeTitulo}
-                    value={this.state.inputTitulo}
-                />
-                <label>Descrição</label>
-                <input 
-                    onChange={this.onChangeDescricao}
-                    value={this.state.inputDescricao}
-                />
-                <label>Ordenar por: </label>
-                <select onChange={this.onChangeSelectOrdem} value={this.state.selectOrdem}> 
-                    <option value="">Selecione</option>
-                    <option value="MenorPreco">Menor Preço</option>
-                    <option value="MaiorPreco">Maior Preço</option>
-                    <option value="OrdemAZ">Ordem alfábetica de A-Z</option>
-                    <option value="OrdemZA">Ordem alfabética de Z-A</option>
-                    <option value="MenorPrazo">Menor Prazo</option>
-                    <option value="MaiorPrazo">Maior Prazo</option>
-                </select>
-                <button onClick={this.onClickFiltro}>Filtrar</button>
+                <DivFiltro>
+                    <Input
+                        label = "Valor Mínimo"
+                        onChange={this.onChangeValorMinimo}
+                        value={this.state.inputValorMinimo}
+                    />
+                    <Input
+                        label = "Valor Máximo"
+                        onChange={this.onChangeValorMaximo}
+                        value={this.state.inputValorMaximo}
+                    />
+                    <Input 
+                        label = "Título"
+                        onChange={this.onChangeTitulo}
+                        value={this.state.inputTitulo}
+                    />
+                    <Input
+                        label = "Descrição"
+                        onChange={this.onChangeDescricao}
+                        value={this.state.inputDescricao}
+                    />
+                    <Option onChange={this.onChangeSelectOrdem} value={this.state.selectOrdem}> 
+                        <option value="">Ordenar por: </option>
+                        <option value="MenorPreco">Menor Preço</option>
+                        <option value="MaiorPreco">Maior Preço</option>
+                        <option value="OrdemAZ">Ordem alfábetica de A-Z</option>
+                        <option value="OrdemZA">Ordem alfabética de Z-A</option>
+                        <option value="MenorPrazo">Menor Prazo</option>
+                        <option value="MaiorPrazo">Maior Prazo</option>
+                    </Option>
+                    <ButtonCriacao onClick={this.onClickFiltro}>Filtrar</ButtonCriacao>
+                </DivFiltro>
                 <div>
                     <CardServico 
                         lista={this.state.listaFiltrada}
                         atualiza={this.atualizaEstado}
                     />
                 </div>
-                <button onClick={this.props.voltar}>Voltar</button>
+                <ButtonCriacao onClick={this.props.voltar}>Voltar</ButtonCriacao>
             </div>
         )
     }
