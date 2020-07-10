@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import CheckBox from '@material-ui/core/Checkbox'
+import TextField from '@material-ui/core/TextField'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormLabel from '@material-ui/core/FormLabel'
+import FormControl from '@material-ui/core/FormControl'
 
 const ContainerCheckBox = styled.div`
     display: flex;
@@ -15,8 +21,8 @@ const FormCheckBox = styled.form`
 `
 const ContainerInputs = styled.div`
     display: flex;
-    justify-content: space-between;
-    width: 25vw;
+    justify-content: center;
+    width: 50vw;
     margin: 8px auto;
 `
 const ContainerButtons = styled.div`
@@ -24,6 +30,31 @@ const ContainerButtons = styled.div`
     display: flex;
     justify-content:space-between;
     margin: 0 auto;
+`
+const StyledTextField = styled(TextField)`
+    width: 30vw;
+`
+const ContainerServicos = styled.div`
+    border: 1px solid black;
+    width: 50vw;
+    padding: 16px;
+    margin: 16px auto;
+    border-radius: 20px;
+`
+const ButtonCriacao = styled.button`
+    margin: 16px;
+    height: 40px;
+    width: 200px;
+    background-color: black;
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+    :hover{
+        background-color: #FFEA52;
+        color: #474117;
+    }
 `
 class CriacaoDeServicos extends React.Component {
 
@@ -81,65 +112,77 @@ class CriacaoDeServicos extends React.Component {
     render () {
         console.log(this.state.metodosPag)
         return (
-            <div>
+            <ContainerServicos>
                 <ContainerInputs>
-                    <label>Título</label>
-                    <input 
+                    <StyledTextField
+                        label='Título' 
                         onChange={this.onChangeInputTitulo}
                         value={this.state.inputTitulo}
                     />
                 </ContainerInputs>
                 <ContainerInputs>
-                    <label>Descrição</label>
-                    <input 
+                    <StyledTextField 
+                        label='Descrição'
                         onChange={this.onChangeInputDescricao}
                         value={this.state.inputDescricao}
                     />
                 </ContainerInputs>
                 <ContainerInputs>
-                    <label>Valor da Remuneração</label>
-                    <input 
+                    <StyledTextField 
+                        label='Valor da Remuneração'
                         onChange={this.onChangeInputValorDaRemuneracao}
                         value={this.state.inputValorDaRemuneracao}
                     />
                 </ContainerInputs>
                 <ContainerInputs>
-                    <label>Prazo</label>
-                    <input 
+                    <StyledTextField 
+                        label='Prazo'
                         onChange={this.onChangeInputPrazo}
                         value={this.state.inputPrazo}
                     />
                 </ContainerInputs>
                 <ContainerInputs>
-                    <label>Formas de Pagamento</label>
-                    <FormCheckBox>
-                        <ContainerCheckBox>
-                            <label>Transferência Bancaria </label>
-                            <input type="checkbox" id="Transferência Bancária" value="Transferência Bancária" onChange={this.onChangeChecked}/> 
-                        </ContainerCheckBox>
-                        <ContainerCheckBox>
-                            <label>Cartão de débito </label>       
-                            <input type="checkbox" id="Cartão de débito" value="Cartão de débito" onChange={this.onChangeChecked}/>
-                        </ContainerCheckBox>
-                        <ContainerCheckBox>
-                            <label>Cartão de crédito </label>   
-                            <input type="checkbox" id="Cartão de crédito" value="Cartão de crédito" onChange={this.onChangeChecked}/>
-                        </ContainerCheckBox>
-                        <ContainerCheckBox>
-                            <label>Dinheiro </label> 
-                            <input type="checkbox" id="Dinheiro" value="Dinheiro" onChange={this.onChangeChecked}/>
-                        </ContainerCheckBox>
-                        <ContainerCheckBox>
-                            <label>Boleto</label> 
-                            <input type="checkbox" id="Boleto" value="Boleto" onChange={this.onChangeChecked}/> 
-                        </ContainerCheckBox>
-                    </FormCheckBox>
+                    <FormControl>
+                    <FormLabel component="legend">Formas de Pagamento</FormLabel>
+                    <FormGroup>
+                        <FormControlLabel
+                        control={
+                            <CheckBox color="primary" type="checkbox" id="Transferência Bancária" value="Transferência Bancária" onChange={this.onChangeChecked}/> 
+                        }
+                        label="Transferência Bancária"
+                        />
+                        <FormControlLabel
+                        control={
+                            <CheckBox color="primary" type="checkbox" id="Cartão de débito" value="Cartão de débito" onChange={this.onChangeChecked}/>
+                        }
+                        label="Cartão de débito"
+                        />
+                        <FormControlLabel
+                        control={
+                            <CheckBox color="primary" type="checkbox" id="Cartão de crédito" value="Cartão de crédito" onChange={this.onChangeChecked}/>
+                        }
+                        label="Cartão de Crédito"
+                        />
+                        <FormControlLabel
+                        control={
+                            <CheckBox color="primary" type="checkbox" id="Dinheiro" value="Dinheiro" onChange={this.onChangeChecked}/>
+                        }
+                        label="Dinheiro"
+                        />
+                        <FormControlLabel
+                        control={
+                            <CheckBox color="primary" type="checkbox" id="Boleto" value="Boleto" onChange={this.onChangeChecked}/>
+                        }
+                        label="Cartão de Crédito"
+                        />
+                    </FormGroup>
+                    </FormControl>
                 </ContainerInputs>
                 <ContainerButtons>
-                    <button onClick={this.cadastroServico}>Cadastrar</button>
-                    <button onClick={this.props.voltar}>Voltar</button>
+                    <ButtonCriacao onClick={this.cadastroServico}>Cadastrar</ButtonCriacao>
+                    <ButtonCriacao onClick={this.props.voltar}>Voltar</ButtonCriacao>
                 </ContainerButtons>
-            </div>
+            </ContainerServicos>
         )
     }
 }
