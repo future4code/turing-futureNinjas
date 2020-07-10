@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ContainerFooter = styled.div`
-height: 10vh;
+height: 50px;
 position: fixed;
 bottom: 0;
 background-color: #2B2D2F;

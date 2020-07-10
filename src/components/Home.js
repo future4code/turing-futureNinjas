@@ -7,7 +7,7 @@ const AreaHome = styled.div`
     width: 100vw;
     height: 38vh;
     display: grid;
-    grid-template-columns: 1fr  4fr 2fr 3fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr ;
     grid-gap: 0px 0px;
 `
@@ -18,6 +18,7 @@ const H2 = styled.h2`
    display: grid;
     grid-column: 2/3;
     font-weight: lighter;
+    align-items: center;
 `
 
 const H4 = styled.h4`
@@ -26,26 +27,31 @@ const H4 = styled.h4`
     font-family: 'helvetica';
     display: grid;
     grid-column: 2/4;
-    grid-row: 2/3;
+    grid-row: 2/4;
+
 `
 
 const ButtonHeader = styled.button`
-    height: 40px;
-    width: 200px;
-    background-color: black;
-    color: #FFF;
+    height: 80px;
+    width: 400px;
+    font-size: 1.2em;
+    font-weight: bold;
+    align-items: center;    
+    background-color: #FF7F50;
+    color: #2B2D2F;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     outline:none;
     :hover{
-        background-color: #FFEA52;
-        color: #474117;
+        background-color: #F83F2C;
+        color: #FFF;
     }
     display: grid;
-    grid-column: 4/4;
-    grid-row: 2/2;
+    grid-column: 4/5;
+    grid-row: 1/3;
     padding: 4px;
+    align-self: center;
 `
 
 class Home extends React.Component {
@@ -60,15 +66,15 @@ class Home extends React.Component {
         return (
             <div>
                 <AreaHome>
-                    <H2>O jeito mais esperto de	contratar um serviço</H2>
+                    <H2>O jeito mais esperto de	contratar um serviço!</H2>
                     <H4>Fale o que precisa, receba orçamentos e escolha o melhor.</H4>
-                    <ButtonHeader onClick={this.props.abrirServico}>QUERO UM PROFISSIONAL AGORA</ButtonHeader>
+                    <ButtonHeader onClick={this.props.abrirServico}>QUERO UM PROFISSIONAL AGORA!</ButtonHeader>
                 </AreaHome>
                 <hr />
                 <AreaHome>
                     <H2>Você é profissional?</H2>
-                    <H4>Venha, faça seu anúncio gratuito e amplie seus negócios e sua atuação no mercado</H4>
-                    <ButtonHeader onClick={this.props.abrirCriacaoDeServicos}>CADASTRAR MEUS SERVIÇOS</ButtonHeader>
+                    <H4>Venha, faça seu anúncio gratuito e amplie seus negócios e sua atuação no mercado.</H4>
+                    <ButtonHeader onClick={this.props.abrirCriacaoDeServicos}>CADASTRAR MEUS SERVIÇOS!</ButtonHeader>
                 </AreaHome>
             </div>
         )
