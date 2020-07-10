@@ -79,15 +79,15 @@ class Servicos extends React.Component {
         if (this.state.inputValorMinimo !== "" || this.state.inputValorMaximo !== "") {
             const novaListaFiltrada = this.state.listaDeServicos.filter((servico) => {
                 if (this.state.inputValorMinimo !== "" && this.state.inputValorMaximo !== "") {
-                    if (servico.value >= this.state.inputValorMinimo && servico.value <= this.state.inputValorMaximo) {
+                    if (Number(servico.value) >= this.state.inputValorMinimo && servico.value <= this.state.inputValorMaximo) {
                         return true
                     }
                 } else if (this.state.inputValorMinimo === "") {
-                    if (servico.value <= this.state.inputValorMaximo) {
+                    if (Number(servico.value) <= this.state.inputValorMaximo) {
                         return true
                     }
                 } else if (this.state.inputValorMaximo === "") {
-                    if (servico.value >= this.state.inputValorMinimo) {
+                    if (Number(servico.value) >= this.state.inputValorMinimo) {
                         return true
                     }
                 } 
