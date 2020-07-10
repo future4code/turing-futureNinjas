@@ -7,7 +7,7 @@ const ContainerCard = styled.div`
 border: 1px solid #b2aeae;
 padding: 16px;
 width: 90%;
-height: 50vh;
+height: 100%;
 margin: 0 auto;
 display: grid;
 grid-row: repeat(7, 1fr);
@@ -16,11 +16,16 @@ grid-row: repeat(7, 1fr);
 const H2Card = styled.h2`
 margin: 0;
 padding: 0;
+padding-bottom: 10px;
+border-bottom: 1px solid black;
+text-align: center;
 `
 
 const H3Card = styled.h3`
 margin: 0;
 padding: 0;
+padding-bottom: 15px;
+padding-top: 8px;
 font-size: 16px;
 font-weight: 600;
 `
@@ -32,8 +37,8 @@ const ButtonCr = styled.button`
     width: 200px;
     background-color:  ${props => props.cor};
     color: ${props => props.texto};
-    border: none;
-    border-radius: 10px;
+    border: ${props => props.border};
+    border-radius: ${props => props.borderRadius};
     cursor: pointer;
     outline:none;
     :hover{
@@ -99,7 +104,7 @@ class CardServico extends React.Component {
        
                        {this.props.lista.map((servico) => {
        
-                           const renderizaBotao = servico.taken === true ? "Descandidatar-me" : "Candidatar-me"
+                           const renderizaBotao = servico.taken === true ? "DESCANDIDATAR-ME" : "CANDIDATAR-ME"
        
                            if (servico.taken) {
                                return (
@@ -111,7 +116,7 @@ class CardServico extends React.Component {
                                        <p>Pagamento: {servico.paymentMethods.map((metodo) => {
                                            return (`${metodo}; `)
                                        })}</p>
-                                       <ButtonCr cor={"#FFEA52"} hover={"black"} txt={"white"} texto={"black"} onClick={() => this.onClickDescandidatar(servico.id)}> {renderizaBotao} </ButtonCr>
+                                       <ButtonCr  border={"2px solid #FFEA52"} borderRadius={"none"} cor={"#FFF"} hover={"#FFEA52"} txt={"#FFF"} texto={"#000"} onClick={() => this.onClickDescandidatar(servico.id)}> {renderizaBotao} </ButtonCr>
                                    </ContainerCard>
                                )
                            } else {
@@ -124,7 +129,7 @@ class CardServico extends React.Component {
                                        <p>Pagamento: {servico.paymentMethods.map((metodo) => {
                                            return (`${metodo}; `)
                                        })}</p>
-                                       <ButtonCr cor={"black"} hover={"#FFEA52"} txt={"black"} texto={"white"} onClick={() => this.onClickCandidatar(servico.id)}> {renderizaBotao} </ButtonCr>
+                                       <ButtonCr  border={"none"} borderRadius={"10px"} cor={"black"} hover={"#FFEA52"} txt={"black"} texto={"white"} onClick={() => this.onClickCandidatar(servico.id)}> {renderizaBotao} </ButtonCr>
                                    </ContainerCard>
                                )
                            } 
