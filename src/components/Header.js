@@ -9,6 +9,7 @@ const H1Header = styled.h1`
 `
 
 const ContainerHeader = styled.div`
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid grey;
@@ -17,7 +18,7 @@ const ContainerHeader = styled.div`
     padding: 0 32px;
 `
 
-const ButtonHeader = styled.button`
+export const ButtonHeader = styled.button`
     margin: 16px;
     height: 40px;
     width: 200px;
